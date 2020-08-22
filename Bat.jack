@@ -1,13 +1,3 @@
-// This file is part of www.nand2tetris.org
-// and the book "The Elements of Computing Systems"
-// by Nisan and Schocken, MIT Press.
-// File name: projects/09/Square/Square.jack
-
-/**
- * Implements a graphic square. A graphic square has a screen location
- * and a size. It also has methods for drawing, erasing, moving on the 
- * screen, and changing its size.
- */
 class Bat {
 
     // Location on the screen
@@ -35,21 +25,21 @@ class Bat {
         return;
     }
 
-    /** Draws the square on the screen. */
+    /** Draws the bat on the screen. */
     method void draw() {
         do Screen.setColor(true);
         do Screen.drawRectangle(x, y, x + width, y + height);
         return;
     }
 
-    /** Erases the square from the screen. */
+    /** Erases the bat from the screen. */
     method void erase() {
         do Screen.setColor(false);
         do Screen.drawRectangle(x, y, x + 2, y + 2);
         return;
     }
 
-    /** Moves left by 2 pixels. */
+    /** Moves left by one step */
     method void moveLeft() {
         let x = x - 4;
 	    if (x < 0) {
@@ -62,7 +52,7 @@ class Bat {
         return;
     }
 
-    /** Moves right by 2 pixesls. */
+    /** Moves right by one step */
     method void moveRight() {
         let x = x + 4;
 	    if ((x + width) > 511) {

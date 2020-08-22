@@ -1,23 +1,9 @@
-// This file is part of www.nand2tetris.org
-// and the book "The Elements of Computing Systems"
-// by Nisan and Schocken, MIT Press.
-// File name: projects/09/Square/SquareGame.jack
-
-/**
- * Implements the Square Dance game.
- * In this game you can move a black square around the screen and
- * change its size during the movement.
- * In the beginning, the square is located at the top-left corner
- * of the screen. The arrow keys are used to move the square.
- * The 'z' & 'x' keys are used to decrement and increment the size.
- * The 'q' key is used to quit the game.
- */
 class BatGame {
 
     // The bat
     field Bat bat;
 
-    // The square's movement direction
+    // The bat's movement direction
     field int direction; // 3=left,4=right
 
     /** Constructs a new Square Game. */
@@ -36,7 +22,7 @@ class BatGame {
     }
 
     /** Starts the game. Handles inputs from the user that control
-     *  the square's movement, direction and size. */
+     *  the bats's movement direction. */
     method void run() {
         var char key;
         var boolean exit;
@@ -70,7 +56,7 @@ class BatGame {
         return;
 	}
 
-    /** Moves the square by 2 pixels in the current direction. */
+    /** Moves the bat by one step. */
     method void moveBat() {
         if (direction = 3) {
             do bat.moveLeft();
