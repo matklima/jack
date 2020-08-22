@@ -127,36 +127,36 @@ class Ball {
 
             if (positivey) {
          	if (invert) {
-	   	    let x = x + 4;
+	   	    let x = x + 2;
     	        }
                 else {
-		    let y = y + 4;
+		    let y = y + 2;
                 }
             }
             else {
          	if (invert) {
-	   	    let x = x - 4;
+	   	    let x = x - 2;
     	        }
                 else {
-		    let y = y - 4;
+		    let y = y - 2;
                 }
             }
 	}
 
         if (positivex) {
       	    if (invert) {
-	       let y = y + 4;
+	       let y = y + 2;
     	    }
             else {
-	        let x = x + 4;
+	        let x = x + 2;
             }
 	}
 	else {
             if (invert) {
-	        let y = y - 4;
+	        let y = y - 2;
 	    }
             else {
-		let x = x - 4;
+		let x = x - 2;
             }
 	}
 
