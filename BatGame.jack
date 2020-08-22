@@ -10,7 +10,11 @@ class BatGame {
     constructor BatGame new() {
         let bat = Bat.new(230, 229, 50, 7);
         let direction = 0;
-
+        do Screen.drawRectangle(0, 238, 511, 240);
+	    do Output.moveCursor(22,0);
+	    do Output.printString("Player Score: 0");
+        do Output.moveCursor(22,50);
+        do Output.printString("PC Score: 0");
         return this;
     }
 
