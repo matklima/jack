@@ -62,7 +62,7 @@ class Bat {
         return;
     }
 
-    /** Moves right by 2 pixels. */
+    /** Moves right by 2 pixesls. */
     method void moveRight() {
         let x = x + 4;
 	    if ((x + width) > 511) {
