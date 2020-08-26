@@ -17,7 +17,7 @@ class BatGame {
     field boolean exit;
 
     // The current score.
-    field int score;
+    field int score, pc_score;
 
     // The last wall that the ball bounced from.
     field int lastWall;
@@ -121,7 +121,7 @@ class BatGame {
      * increases the score by one.
      */
     method void moveBall() {
-	var int bouncingDirection, batLeft, batRight, ballLeft, ballRight;
+	var int bouncingDirection, batLeft, bat_pc_Left, batRight, bat_pc_Right, ballLeft, ballRight;
 
 	let wall = ball.move();
 
@@ -130,6 +130,8 @@ class BatGame {
 	    let bouncingDirection = 0;
 	    let batLeft = bat.getLeft();
 	    let batRight = bat.getRight();
+        let bat_pc_Left = bat_pc.getLeft();
+	    let bat_pc_Right = bat_pc.getRight();
 	    let ballLeft = ball.getLeft();
 	    let ballRight = ball.getRight();
 	
@@ -148,6 +150,23 @@ class BatGame {
   		    let score = score + 1;
 		    do Output.moveCursor(22,15);
 		    do Output.printInt(score);
+		}
+	    }
+        if (wall = 3) {
+		let exit = (bat_pc_Left > ballRight) | (bat_pc_Right < ballLeft);
+	        if (~exit) {
+		    if (ballRight < (bat_pc_Left + 10)) {
+			let bouncingDirection = -1;
+		    }
+		    else {
+			if (ballLeft > (bat_pc_Right - 10)) {
+			    let bouncingDirection = 1;
+			}
+		    }
+
+  		    let pc_score = pc_score + 1;
+		    do Output.moveCursor(22,61);
+		    do Output.printInt(pc_score);
 		}
 	    }
 
