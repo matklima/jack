@@ -33,7 +33,7 @@ class Ball {
 	let y = Ay;
 	let leftWall = AleftWall;
 	let rightWall = ArightWall - 6; // -6 for ball size
-	let topWall = AtopWall; 
+	let topWall = AtopWall + 6; 
 	let bottomWall = AbottomWall - 6; // -6 for ball size
 	let wall = 0;
     	
