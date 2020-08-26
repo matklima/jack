@@ -39,6 +39,15 @@ class Bat {
         return;
     }
 
+     method int getLeft() {
+        return x;
+    }
+
+    /** Returns the right edge of the bat. */
+    method int getRight() {
+        return x + width;
+    }
+
     /** Moves left by one step */
     method void moveLeft() {
         let x = x - 4;

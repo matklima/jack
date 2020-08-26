@@ -2,6 +2,7 @@ class BatGame {
 
     // The bat
     field Bat bat;
+    field Bat bat_pc;
 
     // The ball
     field Ball ball;
@@ -25,6 +26,8 @@ class BatGame {
     constructor BatGame new() {
         let bat = Bat.new(230, 229, 50, 7);
         let direction = 0;
+        let bat_pc = Bat.new(230, 1, 50, 7);
+        let direction = 0;
         
         let ball = Ball.new(253, 222, 0, 511, 0, 229);
 	    do ball.setDestination(400,0);
@@ -44,54 +47,67 @@ class BatGame {
     /** Deallocates the object's memory. */
     method void dispose() {
         do bat.dispose();
+        do bat_pc.dispose();
         do Memory.deAlloc(this);
         return;
     }
 
-    /** Starts the game. Handles inputs from the user that control
-     *  the bats's movement direction. */
-    method void run() {
-        var char key;
-        var boolean exit;
+        /** Returns the left edge of the ball. */
+    method boolean get_error() {
+        return exit;
+    }
 
-        let exit = false;
+    method boolean set_error(boolean exit) {
+        return exit;
+    }
+
+    /** Starts the game. Handles inputs from the user that control
+     *  the bat's movement direction. */
+    /** Starts the game. Handles inputs from the user that control
+     *  the bat's movement direction. */
+     method void run() {
+        var char key;
 
         while (~exit) {
             // waits for a key to be pressed.
-            while (key = 0) {
+            while ((key = 0) & (~exit)) {
                 let key = Keyboard.keyPressed();
                 do moveBat();
-                do moveBall();
+		        do moveBall();
             }
 
-            if (key = 81) {
-                let exit = true;
-            }
             if (key = 130) {
-                let direction = 3;
+	            let direction =3;
             }
-            if (key = 132) {
-                let direction = 4;
+	        if (key = 132) {
+ 	            let direction =4;
             }
 
-            // waits for the key to be released.
-            while (~(key = 0)) {
+            // Waits for the key to be released.
+            while ((~(key = 0)) & (~exit)) {
                 let key = Keyboard.keyPressed();
                 do moveBat();
                 do moveBall();
             }
         }
+
+	if (exit) {
+    	do Output.moveCursor(10,27);
+	    do Output.printString("Game Over");
+	}
             
         return;
-	}
+    }
 
     /** Moves the bat by one step. */
     method void moveBat() {
         if (direction = 3) {
             do bat.moveLeft();
+            do bat_pc.moveLeft();
         }
         if (direction = 4) {
             do bat.moveRight();
+            do bat_pc.moveRight();
         }
 
         do Sys.wait(5); // Delays the next movement.
@@ -112,8 +128,8 @@ class BatGame {
 	if ((wall > 0) & (~(wall = lastWall))) {
 	    let lastWall = wall;
 	    let bouncingDirection = 0;
-	    let batLeft = bat.moveLeft();
-	    let batRight = bat.moveRight();
+	    let batLeft = bat.getLeft();
+	    let batRight = bat.getRight();
 	    let ballLeft = ball.getLeft();
 	    let ballRight = ball.getRight();
 	
@@ -130,7 +146,7 @@ class BatGame {
 		    }
 
   		    let score = score + 1;
-		    do Output.moveCursor(22,7);
+		    do Output.moveCursor(22,15);
 		    do Output.printInt(score);
 		}
 	    }
