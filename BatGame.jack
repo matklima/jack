@@ -82,10 +82,12 @@ class BatGame {
                 let bat_pc_Right = bat_pc.getRight();
                 let new_destination = ball.getRight();
                 let key = Keyboard.keyPressed();
+                if ((wall = 4) | (wall =0)){
                 if (bat_pc_Right < new_destination){
                     do bat_pc.moveRight();
                 }else{
                     do bat_pc.moveLeft();
+                }
                 }
                 
             }
@@ -104,10 +106,12 @@ class BatGame {
                 let key = Keyboard.keyPressed();
                 let new_destination = ball.getRight();
                 let key = Keyboard.keyPressed();
+                if ((wall = 4) | (wall =0)){
                 if (bat_pc_Right < new_destination){
                     do bat_pc.moveRight();
                 }else{
                     do bat_pc.moveLeft();
+                }
                 }
               
                 
