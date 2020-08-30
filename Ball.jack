@@ -16,6 +16,9 @@ class Ball {
     // Distance of last destination
     field int lengthx, lengthy;
 
+    // Distance of last destination
+    field int level;
+
     // Used for straight line movement computation
     field int d, straightD, diagonalD;
     field boolean invert, positivex, positivey;
@@ -28,7 +31,7 @@ class Ball {
 
     /** Constructs a new Ball with a given initial location
      *  and the locations of the walls. */
-    constructor Ball new(int Ax, int Ay, int AleftWall, int ArightWall, int AtopWall, int AbottomWall) {    	
+    constructor Ball new(int Ax, int Ay, int AleftWall, int ArightWall, int AtopWall, int AbottomWall, int movement) {    	
 	let x = Ax;		
 	let y = Ay;
 	let leftWall = AleftWall;
@@ -36,6 +39,7 @@ class Ball {
 	let topWall = AtopWall + 6; 
 	let bottomWall = AbottomWall - 6; // -6 for ball size
 	let wall = 0;
+    let level = movement;
     	
         do show();
 
@@ -127,36 +131,36 @@ class Ball {
 
             if (positivey) {
          	if (invert) {
-	   	    let x = x + 1;
+	   	    let x = x + level;
     	        }
                 else {
-		    let y = y + 1;
+		    let y = y + level;
                 }
             }
             else {
          	if (invert) {
-	   	    let x = x - 1;
+	   	    let x = x - level;
     	        }
                 else {
-		    let y = y - 1;
+		    let y = y - level;
                 }
             }
 	}
 
         if (positivex) {
       	    if (invert) {
-	       let y = y + 1;
+	       let y = y + level;
     	    }
             else {
-	        let x = x + 1;
+	        let x = x + level;
             }
 	}
 	else {
             if (invert) {
-	        let y = y - 1;
+	        let y = y - level;
 	    }
             else {
-		let x = x - 1;
+		let x = x - level;
             }
 	}
 

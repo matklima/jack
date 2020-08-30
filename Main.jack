@@ -1,12 +1,13 @@
 class Main {
-
     /** Initializes a new game and starts it. */    
     function void main() {
         var BatGame game;
+        var int level;
+        let level = Keyboard.readInt("Pick difficulty level (1-2):");
 
-        let game = BatGame.new();
+        let game = BatGame.new(level);
         do game.run();
-	do game.dispose();
+	    do game.dispose();
 
         return;
     }
