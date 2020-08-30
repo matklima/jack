@@ -67,13 +67,26 @@ class BatGame {
      *  the bat's movement direction. */
      method void run() {
         var char key;
+        var int  bat_pc_Left, bat_pc_Right, ballLeft, ballRight, new_destination;
+        let bat_pc_Left = bat_pc.getLeft();
+	    let bat_pc_Right = bat_pc.getRight();
+	    let ballLeft = ball.getLeft();
+	    let ballRight = ball.getRight();
 
         while (~exit) {
             // waits for a key to be pressed.
             while ((key = 0) & (~exit)) {
+                let bat_pc_Right = bat_pc.getRight();
+                let new_destination = ball.getRight();
                 let key = Keyboard.keyPressed();
                 do moveBat();
 		        do moveBall();
+                if (bat_pc_Right < new_destination){
+                    do bat_pc.moveRight();
+                }else{
+                    do bat_pc.moveLeft();
+                }
+                
             }
 
             if (key = 130) {
@@ -86,8 +99,17 @@ class BatGame {
             // Waits for the key to be released.
             while ((~(key = 0)) & (~exit)) {
                 let key = Keyboard.keyPressed();
+                let new_destination = ball.getRight();
+                let key = Keyboard.keyPressed();
                 do moveBat();
                 do moveBall();
+                if (bat_pc_Right < new_destination){
+                    do bat_pc.moveRight();
+                }else{
+                    do bat_pc.moveLeft();
+                }
+              
+                
             }
         }
 
@@ -103,11 +125,9 @@ class BatGame {
     method void moveBat() {
         if (direction = 3) {
             do bat.moveLeft();
-            do bat_pc.moveLeft();
         }
         if (direction = 4) {
             do bat.moveRight();
-            do bat_pc.moveRight();
         }
 
         do Sys.wait(5); // Delays the next movement.
