@@ -24,9 +24,11 @@ class BatGame {
 
     /** Constructs a new Square Game. */
     constructor BatGame new(int level) {
-        let bat = Bat.new(230, 229, 50, 7);
+        var int bat_size;
+        let bat_size = ((511/100)*10); //10 % of field size
+        let bat = Bat.new(230, 229, bat_size, 7);
         let direction = 0;
-        let bat_pc = Bat.new(230, 1, 50, 7);
+        let bat_pc = Bat.new(230, 1, bat_size, 7);
         let direction = 0;
         let level = level;
         
@@ -80,14 +82,20 @@ class BatGame {
                 do moveBat();
 		        do moveBall();
                 let bat_pc_Right = bat_pc.getRight();
+                let bat_pc_Left = bat_pc.getLeft();
                 let new_destination = ball.getRight();
                 let key = Keyboard.keyPressed();
-                if ((wall = 4) | (wall =0)){
-                if (bat_pc_Right < new_destination){
-                    do bat_pc.moveRight();
-                }else{
-                    do bat_pc.moveLeft();
-                }
+                if (~(wall =3)){
+                    if (((wall = 4) | (wall =0) | (wall =1) | (wall =2)) & ~(lastWall = 3) ){
+                            if ((bat_pc_Right - 5) < new_destination){
+                                do bat_pc.moveRight();
+                            }else{
+                                if ((bat_pc_Left + 5) > new_destination)
+                                {
+                                    do bat_pc.moveLeft();
+                                }
+                            }
+                    }
                 }
                 
             }
@@ -105,13 +113,20 @@ class BatGame {
                 do moveBall();
                 let key = Keyboard.keyPressed();
                 let new_destination = ball.getRight();
+                let bat_pc_Right = bat_pc.getRight();
+                let bat_pc_Left = bat_pc.getLeft();
                 let key = Keyboard.keyPressed();
-                if ((wall = 4) | (wall =0)){
-                if (bat_pc_Right < new_destination){
-                    do bat_pc.moveRight();
-                }else{
-                    do bat_pc.moveLeft();
-                }
+                if (~(wall =3)){
+                    if (((wall = 4) | (wall =0) | (wall =1) | (wall =2)) & ~(lastWall = 3) ){
+                        if ((bat_pc_Right - 5) < new_destination){
+                            do bat_pc.moveRight();
+                        }else{
+                            if ((bat_pc_Left + 5) > new_destination)
+                            {
+                                do bat_pc.moveLeft();
+                            }
+                        }
+                    }
                 }
               
                 

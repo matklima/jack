@@ -3,8 +3,12 @@ class Main {
     function void main() {
         var BatGame game;
         var int level;
-        let level = Keyboard.readInt("Pick difficulty level (1-2):");
-
+        while (~(level =2)  & ~(level = 3)) {
+        do Output.moveCursor(22,15);
+        let level = Keyboard.readInt("Pick difficulty level (2-3):");
+        }
+        do Output.moveCursor(22,15);
+        do Output.printString("                             ");
         let game = BatGame.new(level);
         do game.run();
 	    do game.dispose();
