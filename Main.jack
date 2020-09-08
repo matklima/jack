@@ -3,13 +3,13 @@ class Main {
     function void main() {
         var BatGame game;
         var int level;
-        while (~(level =2)  & ~(level = 3)) {
+        while (~(level =2)  & ~(level = 3)) { //ostani u ovoj petlji dok korisnik ne upise 2 ili 3
         do Output.moveCursor(22,15);
         let level = Keyboard.readInt("Pick difficulty level (2-3):");
         }
         do Output.moveCursor(22,15);
         do Output.printString("                             ");
-        let game = BatGame.new(level);
+        let game = BatGame.new(level); //predaj izabrani level u BatGame, BatGame ce ga propagirati do Ball.jack a zatim ce ga ball.jack koristiti za funkciju move di se određuje brzina loptice
         do game.run();
 	    do game.dispose();
 

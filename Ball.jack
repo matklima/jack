@@ -53,7 +53,7 @@ class Ball {
     }
 
     /** Draws the ball on the screen. */
-    method void show() {
+    method void show() { // metoda koja samo omogucuje prikaz loptice na ekranu a za određivanje lokacije crtanja korsti metodu draw iz ovog filea
         do Screen.setColor(true);
 	do draw();
         return;
@@ -67,7 +67,7 @@ class Ball {
     }
 
     /** Draws the ball. */
-    method void draw() {
+    method void draw() { //metoda draw nacrta lopticu na zadanim koordinatama x i y (prva 2 argumenta) a njena velicina u x smjeru je x+5 a u y smjeru y+5
 	do Screen.drawRectangle(x, y, x + 5, y + 5);
 	return;
     }
@@ -164,19 +164,19 @@ class Ball {
             }
 	}
 
-	if (~(x > leftWall)) {
+	if (~(x > leftWall)) {// koordinata loptice jednaka je koordinati lijevog zida
 	    let wall = 1;    
 	    let x = leftWall;
 	}
-        if (~(x < rightWall)) {
+        if (~(x < rightWall)) { // desna koordinata loptice jednaka je koordinati desnog zida, što znaci da je loptica udarila desni zid
 	    let wall = 2;    
 	    let x = rightWall;
 	}
-        if (~(y > topWall)) {
+        if (~(y > topWall)) { // gornja koordinata loptice jednaka je koordinati gornjeg zida što znaci da je loptica udarila gornji zid
             let wall = 3;    
 	    let y = topWall;
         }
-        if (~(y < bottomWall)) {
+        if (~(y < bottomWall)) { //donja koordinata loptice jednjaka je koordinati donjeg zida što znaci da je loptica udarila donji zid
             let wall = 4;    
 	    let y = bottomWall;
         }
@@ -210,7 +210,7 @@ class Ball {
 	}
 
 	if (wall = 1) {
-	    let newx = 506;
+	    let newx = 506;//nakon udarca u lijevi zid ako je odbijanje ravno nova lokacija na x osi postaje desni zid odnosno 511 i velicina loptice (5)
 	    let newy = (divLengthy * (-50)) / divLengthx;
             let newy = y + (newy * factor);
 	}
